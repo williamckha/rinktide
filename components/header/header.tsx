@@ -1,12 +1,11 @@
 import { Box } from "@mui/joy";
-import { Scoreboard } from "../scoreboard/scoreboard";
-import { GamePlayByPlay } from "@/app/api/nhl/gamecenter/[gameId]/play-by-play/types";
+import { ReactNode } from "react";
 
-interface GameHeaderProps {
-  game: GamePlayByPlay;
+interface HeaderProps {
+  children?: ReactNode;
 }
 
-export const GameHeader = ({ game }: GameHeaderProps) => {
+export const Header = ({ children }: HeaderProps) => {
   return (
     <Box
       bgcolor={"background.surface"}
@@ -18,9 +17,10 @@ export const GameHeader = ({ game }: GameHeaderProps) => {
       width={"100%"}
       display={"flex"}
       justifyContent={"center"}
+      alignItems={"center"}
       padding={2}
     >
-      <Scoreboard game={game} />
+      {children}
     </Box>
   );
 };

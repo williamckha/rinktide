@@ -14,7 +14,7 @@ export type GameLanding =
   | FinishedGameLanding;
 
 export interface FutureGameLanding extends FutureGame {
-  readonly summary: GameLandingSummary;
+  readonly matchup: object[];
 }
 
 export interface LiveGameLanding extends LiveGame {
@@ -92,9 +92,8 @@ export const isFutureGameLanding = (
   game: GameLanding,
 ): game is FutureGameLanding => isFutureGame(game);
 
-export const isLiveGameLanding = (
-  game: GameLanding,
-): game is LiveGameLanding => isLiveGame(game);
+export const isLiveGameLanding = (game: GameLanding): game is LiveGameLanding =>
+  isLiveGame(game);
 
 export const isFinishedGameLanding = (
   game: GameLanding,

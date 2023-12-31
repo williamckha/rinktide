@@ -6,20 +6,13 @@ export type GameState =
   | "LIVE"
   | "PRE"
   | "CRIT";
-  
+
 export type GameScheduleState = "OK" | "TBD" | "PPD" | "SUSP" | "CNCL";
 
 // 1 - Pre season
 // 2 - Regular season
 // 3 - Playoff
 export type GameType = 1 | 2 | 3;
-
-export interface GameWeek {
-  readonly date: string;
-  readonly dayAbbrev: string;
-  readonly numberOfGames: number;
-  readonly games: Game[];
-}
 
 export interface Name {
   readonly default: string;
@@ -120,6 +113,8 @@ export interface FutureGame extends Game {
 }
 
 export interface LiveGame extends Game {
+  readonly period: number;
+  readonly periodDescriptor: PeriodDescriptor;
   readonly gameState: "LIVE" | "CRIT";
   readonly homeTeam: LiveTeam;
   readonly awayTeam: LiveTeam;
@@ -127,9 +122,26 @@ export interface LiveGame extends Game {
 }
 
 export interface FinishedGame extends Game {
+  readonly period: number;
+  readonly periodDescriptor: PeriodDescriptor;
   readonly gameState: "OFF" | "FINAL";
   readonly homeTeam: FinishedTeam;
   readonly awayTeam: FinishedTeam;
+  readonly threeMinRecap: string;
+}
+
+export interface Schedule {
+  readonly prevDate: string;
+  readonly currentDate: string;
+  readonly nextDate: string;
+  readonly gameWeek: ScheduleDay[];
+  readonly games: Game[];
+}
+
+export interface ScheduleDay {
+  readonly date: string;
+  readonly dayAbbrev: string;
+  readonly numberOfGames: number;
 }
 
 export const isFutureGame = (game: Game): game is FutureGame =>

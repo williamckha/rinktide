@@ -22,15 +22,12 @@ export interface FutureGamePlayByPlay extends FutureGame {
 }
 
 export interface LiveGamePlayByPlay extends LiveGame {
-  readonly period: number;
-  readonly periodDescriptor: PeriodDescriptor;
   readonly situation?: GameSituation;
   readonly rosterSpots: RosterSpot[];
   readonly plays: Play[];
 }
 
 export interface FinishedGamePlayByPlay extends FinishedGame {
-  readonly threeMinRecap: string;
   readonly gameOutcome: GameOutcome;
   readonly rosterSpots: RosterSpot[];
   readonly plays: Play[];
@@ -87,6 +84,11 @@ export interface ShotPlay extends Play {
 export interface GoalPlay extends Play {
   readonly typeDescKey: "goal";
   readonly details: GoalPlayDetail;
+}
+
+export interface PenaltyPlay extends Play {
+  readonly typeDescKey: "penalty";
+  readonly details: PenaltyPlayDetail;
 }
 
 export interface StoppagePlayDetail {
@@ -197,3 +199,6 @@ export const isShotPlay = (play: Play): play is ShotPlay =>
   play.typeDescKey === "shot-on-goal" ||
   play.typeDescKey === "missed-shot" ||
   play.typeDescKey === "goal";
+
+export const isPenaltyPlay = (play: Play): play is PenaltyPlay =>
+  play.typeDescKey === "penalty";
