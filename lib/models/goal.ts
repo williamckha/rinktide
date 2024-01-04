@@ -48,8 +48,8 @@ export const goalsFromGame = (
       primaryAssistPlayer: getRosterSpot(goal.assists[0]?.playerId),
       secondaryAssistPlayer: getRosterSpot(goal.assists[1]?.playerId),
       scoringTeam:
-        goal.teamAbbrev === gameLanding.awayTeam.abbrev ? "away" : "home",
-      scoringTeamAbbrev: goal.teamAbbrev,
+        goal.teamAbbrev.default === gameLanding.awayTeam.abbrev ? "away" : "home",
+      scoringTeamAbbrev: goal.teamAbbrev.default,
       awayScore: goal.awayScore,
       homeScore: goal.homeScore,
       time: {

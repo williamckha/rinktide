@@ -78,7 +78,7 @@ export const GoalCard = ({ goal, isCompact = false }: GoalCardProps) => {
     <Card
       variant={"outlined"}
       sx={{
-        width: 324,
+        width: 330,
         boxShadow: "lg",
       }}
     >

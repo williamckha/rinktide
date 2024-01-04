@@ -2,6 +2,7 @@ import {
   FinishedGame,
   FutureGame,
   LiveGame,
+  Name,
   PeriodDescriptor,
   isFinishedGame,
   isFutureGame,
@@ -65,16 +66,16 @@ export interface GameLandingSummaryScoringGoal {
   readonly situationCode: string;
   readonly strength: "ev" | "pp" | "sh";
   readonly playerId: number;
-  readonly firstName: string;
-  readonly lastName: string;
-  readonly name: string;
-  readonly teamAbbrev: string;
+  readonly firstName: Name;
+  readonly lastName: Name;
+  readonly name: Name;
+  readonly teamAbbrev: Name;
   readonly headshot: string;
   readonly highlightClip?: number;
   readonly goalsToDate: number;
   readonly awayScore: number;
   readonly homeScore: number;
-  readonly leadingTeamAbbrev?: string;
+  readonly leadingTeamAbbrev?: Name;
   readonly timeInPeriod: string;
   readonly shotType: string;
   readonly goalModifier: string;
